@@ -13,10 +13,19 @@
         </h1>
 </header>
     <div class="card">
-        <div class="search">
-            <input type="text" placeholder="Enter City Name" spellcheck="false">
-            <button> <img id="look" src="Images/search50px.png" alt="" style="size:5px;"></button>
+        <div class="search-container">
+            <input type="text" placeholder="Enter City Name" spellcheck="false" id="place" list="search-history-list">
+            <datalist id="search-history-list"></datalist>
+            <div id="suggestions" class="suggestions-box"></div>
+            <button type="submit" id="submit"> <img  id="look" src="Images/search50px.png" alt="" style="size:5px;"></button>
         </div>
     </div>
+    <h3 id="city">City</h3>
+    <h4 id="lat">lat</h4>
+    <h4 id="lon">lon</h4>
+    <h4 id="temp">Temp</h4>
+    <h2>5-Day Forecast</h2>
+    <div id="forecast"></div>
+    <script src="script.js"></script>
 </body>
 </html>
