@@ -1,34 +1,195 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-#look {
-    display: flex;
-    padding: 2;
+:root {
+  --bg-start: #edf7ff;
+  --bg-end: #cde5f7;
+  --card-bg: #ffffff;
+  --text: #11243a;
+  --muted: #4b617a;
+  --accent: #0b84f3;
+  --accent-hover: #066bc6;
+  --border: #d5e4f1;
+  --shadow: 0 12px 28px rgba(9, 47, 82, 0.12);
+}
+
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: linear-gradient(160deg, var(--bg-start), var(--bg-end));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 16px 48px;
+}
+
+header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.card {
+  width: min(640px, 100%);
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 16px;
+  margin-bottom: 22px;
 }
 
 .search-container {
   position: relative;
-  width: 250px;
+  display: flex;
+  gap: 10px;
+}
+
+#place {
+  flex: 1;
+  height: 46px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 14px;
+  font-size: 1rem;
+  color: var(--text);
+  outline: none;
+}
+
+#place:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(11, 132, 243, 0.16);
+}
+
+#submit {
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 10px;
+  background: var(--accent);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s ease;
+}
+
+#submit:hover {
+  background: var(--accent-hover);
+}
+
+#look {
+  width: 20px;
+  height: 20px;
 }
 
 .suggestions-box {
   position: absolute;
-  width: 100%;
-  background: white;
-  border: 1px solid #ccc;
-  border-top: none;
-  max-height: 150px;
+  top: calc(100% + 4px);
+  left: 0;
+  width: calc(100% - 56px);
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  max-height: 180px;
   overflow-y: auto;
   display: none;
   z-index: 1000;
+  box-shadow: 0 8px 22px rgba(8, 42, 74, 0.15);
 }
 
 .suggestion-item {
-  padding: 8px;
+  padding: 9px 12px;
   cursor: pointer;
+  color: var(--text);
 }
 
 .suggestion-item:hover {
-  background-color: #f0f0f0;
+  background: #eef6ff;
+}
+
+#city,
+#lat,
+#lon,
+#temp,
+h2 {
+  width: min(640px, 100%);
+}
+
+#city {
+  font-size: clamp(1.4rem, 3.5vw, 2rem);
+  margin-bottom: 8px;
+}
+
+#lat,
+#lon,
+#temp {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+h2 {
+  margin-top: 14px;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+#forecast {
+  width: min(920px, 100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.forecast-day {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(8, 42, 74, 0.08);
+  padding: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.forecast-day:hover {
+  transform: scale(1.08) translateY(-4px);
+  box-shadow: 0 12px 24px rgba(8, 42, 74, 0.15);
+}
+
+.forecast-day h3 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.forecast-day p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 540px) {
+  body {
+    padding-top: 24px;
+  }
+
+  .card {
+    padding: 12px;
+  }
+
+  #place,
+  #submit {
+    height: 42px;
+  }
+
+  #submit {
+    width: 42px;
+  }
+
+  .suggestions-box {
+    width: calc(100% - 52px);
+  }
 }
