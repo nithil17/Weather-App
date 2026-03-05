@@ -33,6 +33,16 @@ function formatTemp(tempC) {
   return `${value.toFixed(1)}${unit}`;
 }
 
+function formatForecastDay(dateStr) {
+  const dateObj = new Date(`${dateStr}T12:00:00`);
+  if (Number.isNaN(dateObj.getTime())) return dateStr;
+  return dateObj.toLocaleDateString(undefined, {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+  });
+}
+
 function renderForecastCards(days) {
   const forecastContainer = document.getElementById("forecast");
   if (!forecastContainer) return;
@@ -42,7 +52,7 @@ function renderForecastCards(days) {
     const div = document.createElement("div");
     div.classList.add("forecast-day");
     div.innerHTML = `
-      <h3>${day.date}</h3>
+      <h3>${formatForecastDay(day.date)}</h3>
       <div class="forecast-condition">
         <img src="https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png" alt="${day.weather[0].description}">
         <p>${day.weather[0].description}</p>
