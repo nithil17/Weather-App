@@ -20,7 +20,11 @@ body {
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
-  background: linear-gradient(160deg, var(--bg-start), var(--bg-end));
+  background-image: linear-gradient(rgba(9, 32, 56, 0.28), rgba(9, 32, 56, 0.28)),
+    url("Images/Default.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,25 +32,38 @@ body {
 }
 
 body.weather-default {
-  background: linear-gradient(160deg, #edf7ff, #cde5f7);
+  background-image: linear-gradient(rgba(9, 32, 56, 0.28), rgba(9, 32, 56, 0.28)),
+    url("Images/Default.png");
 }
 
 body.weather-clear {
-  background: linear-gradient(160deg, #fff4c2, #ffd27d);
+  background-image: linear-gradient(rgba(9, 32, 56, 0.2), rgba(9, 32, 56, 0.2)),
+    url("Images/Clear.png");
 }
 
 body.weather-clouds {
-  background: linear-gradient(160deg, #d8dee6, #b7c2d4);
+  background-image: linear-gradient(rgba(9, 32, 56, 0.3), rgba(9, 32, 56, 0.3)),
+    url("Images/Clouds.png");
 }
 
-body.weather-rain,
-body.weather-drizzle,
+body.weather-rain {
+  background-image: linear-gradient(rgba(9, 32, 56, 0.34), rgba(9, 32, 56, 0.34)),
+    url("Images/Rain.png");
+}
+
+body.weather-drizzle {
+  background-image: linear-gradient(rgba(9, 32, 56, 0.34), rgba(9, 32, 56, 0.34)),
+    url("Images/Drizzle.png");
+}
+
 body.weather-thunderstorm {
-  background: linear-gradient(160deg, #7f95b1, #516985);
+  background-image: linear-gradient(rgba(9, 32, 56, 0.38), rgba(9, 32, 56, 0.38)),
+    url("Images/Thunder_storm.png");
 }
 
 body.weather-snow {
-  background: linear-gradient(160deg, #f1f7ff, #d6e9ff);
+  background-image: linear-gradient(rgba(9, 32, 56, 0.2), rgba(9, 32, 56, 0.2)),
+    url("Images/Snow.png");
 }
 
 header h1 {
