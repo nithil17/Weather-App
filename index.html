@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,22 +15,58 @@
 </header>
     <div class="card mx-auto mt-6 w-full max-w-2xl rounded-2xl bg-white p-4 shadow-md sm:p-6">
         <div class="search-container flex items-center gap-2">
-            <input class="flex-1 rounded-xl border border-slate-300 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400" type="text" placeholder="Enter City Name" spellcheck="false" id="place" list="search-history-list">
-            <datalist id="search-history-list"></datalist>
+            <input class="flex-1 rounded-xl border border-slate-300 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-400" type="text" placeholder="Enter City Name" spellcheck="false" id="place">
             <div id="suggestions" class="suggestions-box"></div>
-            <button class="rounded-xl bg-blue-600 px-4 py-2.5 font-semibold text-white hover:bg-blue-700" type="submit" id="submit"> <img  id="look" src="Images/search50px.png" alt="" style="size:5px;"></button>
+            <button class="rounded-xl bg-blue-600 px-4 py-2.5 font-semibold text-white hover:bg-blue-700" type="submit" id="submit" aria-label="Search city">
+                <svg id="look" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle>
+                    <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+                </svg>
+            </button>
             <button class="rounded-xl border border-slate-300 bg-white px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-100" type="button" id="current-location">Use My Location</button>
         </div>
         <p id="error-msg" class="mt-3 hidden rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"></p>
+        <div class="mt-3">
+            <select id="recent-cities" class="hidden w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-blue-400"></select>
+            <p id="recent-empty" class="text-sm text-slate-600">No recent cities yet.</p>
+        </div>
     </div>
-    <h3 id="city" class="mx-auto mt-6 w-full max-w-2xl text-2xl font-semibold">City</h3>
-    <h4 id="lat" class="mx-auto mt-2 w-full max-w-2xl text-slate-700">lat</h4>
-    <h4 id="lon" class="mx-auto mt-1 w-full max-w-2xl text-slate-700">lon</h4>
-    <h4 id="temp" class="mx-auto mt-1 w-full max-w-2xl text-slate-700">Temp</h4>
-    <h2 class="mx-auto mt-6 w-full max-w-2xl text-xl font-bold">5-Day Forecast</h2>
-    <div id="forecast" class="mx-auto mt-4 grid w-full max-w-5xl gap-3 px-2 sm:grid-cols-2 lg:grid-cols-5"></div>
+    <section class="weather-panel mx-auto mt-6 w-full max-w-2xl rounded-2xl bg-white p-4 shadow-md sm:p-6">
+        <h2 class="section-title">Current Weather</h2>
+        <div class="weather-grid">
+            <div class="weather-stat">
+                <p class="stat-label">City</p>
+                <h3 id="city" class="stat-value">Search for a city</h3>
+            </div>
+            <div class="weather-stat">
+                <p class="stat-label">Coordinates</p>
+                <p id="lat" class="stat-sub">Lat: -</p>
+                <p id="lon" class="stat-sub">Lon: -</p>
+            </div>
+            <div class="weather-stat">
+                <p class="stat-label">Temperature</p>
+                <p id="temp" class="stat-value">Temp: -</p>
+            </div>
+            <div class="weather-stat">
+                <p class="stat-label">Air</p>
+                <p id="humidity" class="stat-sub">Humidity: -</p>
+                <p id="wind" class="stat-sub">Wind: -</p>
+            </div>
+        </div>
+        <div class="condition-row">
+            <img id="weather-icon" class="h-12 w-12" src="" alt="Weather icon">
+            <h4 id="condition" class="text-slate-700">Condition: -</h4>
+        </div>
+        <button id="unit-toggle" type="button" class="mx-auto mt-2 block w-full max-w-2xl rounded-lg border border-slate-300 bg-white px-3 py-2 text-left text-sm font-semibold text-slate-700 hover:bg-slate-100">Switch to °F</button>
+        <p id="weather-alert" class="mx-auto mt-2 hidden w-full max-w-2xl rounded-lg border px-3 py-2 text-sm font-semibold"></p>
+    </section>
+    <section class="weather-panel mx-auto mt-6 w-full max-w-5xl rounded-2xl bg-white p-4 shadow-md sm:p-6">
+        <h2 class="section-title">5-Day Forecast</h2>
+        <div id="forecast" class="mx-auto mt-4 grid w-full max-w-5xl gap-3 px-0 sm:grid-cols-2 lg:grid-cols-5"></div>
+    </section>
     <script src="script.js"></script>
 </body>
 </html>
+
 
 

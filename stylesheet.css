@@ -27,6 +27,28 @@ body {
   padding: 32px 16px 48px;
 }
 
+body.weather-default {
+  background: linear-gradient(160deg, #edf7ff, #cde5f7);
+}
+
+body.weather-clear {
+  background: linear-gradient(160deg, #fff4c2, #ffd27d);
+}
+
+body.weather-clouds {
+  background: linear-gradient(160deg, #d8dee6, #b7c2d4);
+}
+
+body.weather-rain,
+body.weather-drizzle,
+body.weather-thunderstorm {
+  background: linear-gradient(160deg, #7f95b1, #516985);
+}
+
+body.weather-snow {
+  background: linear-gradient(160deg, #f1f7ff, #d6e9ff);
+}
+
 header h1 {
   font-size: clamp(1.8rem, 4vw, 2.4rem);
   margin-bottom: 18px;
@@ -111,32 +133,53 @@ header h1 {
   background: #eef6ff;
 }
 
-#city,
-#lat,
-#lon,
-#temp,
-h2 {
-  width: min(640px, 100%);
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 14px;
 }
 
-#city {
-  font-size: clamp(1.4rem, 3.5vw, 2rem);
-  margin-bottom: 8px;
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-#lat,
-#lon,
-#temp {
-  font-size: 1rem;
-  color: var(--muted);
-  margin-bottom: 6px;
-  font-weight: 500;
+.weather-stat {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #f9fcff;
+  padding: 10px;
 }
 
-h2 {
-  margin-top: 14px;
-  margin-bottom: 12px;
-  font-size: 1.2rem;
+.stat-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #5b7086;
+  margin-bottom: 4px;
+}
+
+.stat-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0d2742;
+}
+
+.stat-sub {
+  font-size: 0.95rem;
+  color: #30506d;
+}
+
+.condition-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+#weather-icon[src=""] {
+  display: none;
 }
 
 #forecast {
@@ -147,7 +190,7 @@ h2 {
 }
 
 .forecast-day {
-  background: transparent;
+  background: #f9fcff;
   border: 1px solid var(--border);
   border-radius: 12px;
   box-shadow: 0 6px 16px rgba(8, 42, 74, 0.08);
@@ -171,6 +214,23 @@ h2 {
   line-height: 1.45;
 }
 
+.forecast-condition {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.forecast-condition img {
+  width: 42px;
+  height: 42px;
+}
+
+.metric-icon {
+  display: inline-block;
+  width: 20px;
+}
+
 @media (max-width: 540px) {
   body {
     padding-top: 24px;
@@ -191,5 +251,9 @@ h2 {
 
   .suggestions-box {
     width: calc(100% - 52px);
+  }
+
+  .weather-grid {
+    grid-template-columns: 1fr;
   }
 }
