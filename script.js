@@ -1,5 +1,5 @@
 ﻿const apiKey = "855d79cc47b93b03667d6eae75222844";
-
+// https://github.com/nithil17/Weather-App
 const input = document.getElementById("place");
 const suggestionsBox = document.getElementById("suggestions");
 const submitBtn = document.getElementById("submit");
