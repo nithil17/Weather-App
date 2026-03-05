@@ -146,6 +146,12 @@ submitBtn.addEventListener("click", function () {
   searchByCity(city);
 });
 
+input.addEventListener("keydown", function (event) {
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  submitBtn.click();
+});
+
 if (currentLocationBtn) {
   currentLocationBtn.addEventListener("click", function () {
     if (!navigator.geolocation) {
@@ -353,4 +359,3 @@ function displayForecast(list) {
   }));
   renderForecastCards(currentForecastDays);
 }
-
